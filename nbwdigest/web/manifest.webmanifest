@@ -1,0 +1,14 @@
+{
+  "name": "公文通 · 每日汇总",
+  "short_name": "公文通",
+  "description": "深圳技术大学公文通每日新增公文汇总",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#2f6fed",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

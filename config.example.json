@@ -1,0 +1,17 @@
+{
+  "base_url": "https://nbw.sztu.edu.cn",
+  "list_path": "/list.jsp?urltype=tree.TreeTempUrl&wbtreeid=1029",
+  "categories": [],
+  "max_pages": 3,
+  "fetch_detail": true,
+  "timeout": 25,
+  "retries": 3,
+  "retry_wait": 2.0,
+  "request_interval": 0.6,
+  "deadline_warn_days": 7,
+  "report_dir": "reports",
+  "state_file": "state/seen.json",
+  "archive_file": "state/archive.jsonl",
+  "log_file": "logs/run.log",
+  "state_keep_days": 400
+}

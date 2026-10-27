@@ -1,4 +1,4 @@
-# 贡献指南
+﻿# 贡献指南
 
 感谢有兴趣改进这个项目。它是一个**零依赖**的小工具（只用 Python 标准库），
 请尽量保持这个特点 —— 不要把 requests / bs4 / lxml 加进来。
@@ -8,7 +8,7 @@
 ```bash
 git clone <your-fork>
 cd nbw-digest
-python -m unittest discover -s tests -v      # 25 个用例，全部离线
+python -m unittest discover -s tests -v      # 26 个用例，全部离线
 ```
 
 不需要 `pip install` 任何东西；`python -m nbwdigest --help` 就能跑。

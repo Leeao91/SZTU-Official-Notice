@@ -1,4 +1,4 @@
-# 更新日志
+﻿# 更新日志
 
 ## 1.0.0 — 2026-10-27
 
@@ -29,6 +29,6 @@
 **工程**
 
 - 零第三方依赖（仅标准库），`requires-python >= 3.10`
-- 25 个离线单元测试（含真实页面 fixtures），不依赖校园网
+- 26 个离线单元测试（含真实页面 fixtures），不依赖校园网
 - GitHub Actions：Ubuntu / Windows × Python 3.10 / 3.12 / 3.13
 - 兼容入口 `nbw_digest.py`、`serve.py`，老的计划任务不用改

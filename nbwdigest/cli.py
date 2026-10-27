@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import sys
 import time
@@ -242,8 +243,9 @@ def summary_stats(items: list[dict]) -> dict:
     return {"cats": cats, "by_cat": [f"{c} {cats[c]}" for c in order]}
 
 
-def main() -> int:
-    if sys.stdout is None:      # pythonw / 计划任务里没有控制台
+def ensure_stdio() -> None:
+    """pythonw / 计划任务里没有控制台，给一个哑 stdout，否则任何 print 都会抛异常。"""
+    if sys.stdout is None:
         sys.stdout = io.StringIO()
     if sys.stderr is None:
         sys.stderr = io.StringIO()
@@ -252,6 +254,10 @@ def main() -> int:
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
+
+
+def main() -> int:
+    ensure_stdio()
 
     ap = argparse.ArgumentParser(description="深圳技术大学公文通每日更新汇总")
     ap.add_argument("--pages", type=int, help="最多翻几页列表（默认取配置，3 页）")

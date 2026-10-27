@@ -166,6 +166,21 @@ class TestRender(unittest.TestCase):
             self.assertIn(key, rec)
 
 
+class TestStdioGuard(unittest.TestCase):
+    """计划任务用 pythonw 跑，stdout 是 None —— 这里守住那个坑（曾经真炸过）。"""
+
+    def test_none_stdout_is_replaced(self):
+        old_out, old_err = sys.stdout, sys.stderr
+        sys.stdout = sys.stderr = None
+        try:
+            cli.ensure_stdio()
+            self.assertIsNotNone(sys.stdout)
+            self.assertIsNotNone(sys.stderr)
+            print("这行不能崩")            # 关键：print 必须可用
+        finally:
+            sys.stdout, sys.stderr = old_out, old_err
+
+
 class TestCollectWatermark(unittest.TestCase):
     """用假数据验证增量翻页策略，不联网。"""
 

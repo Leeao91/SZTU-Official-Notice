@@ -33,7 +33,7 @@
 - **三种产物**：`.md`（人看）、`.html`（双击看）、`.json`（程序用）
 - **手机版网页**：自适应、深色模式、日期切换、分类筛选、搜索、只看近期截止
 - **离线单文件**：把最近 N 天打包成一个 HTML，发到手机上断网也能看
-- **可测试**：25 个离线单测 + 真实页面 fixtures，不依赖校园网
+- **可测试**：26 个离线单测 + 真实页面 fixtures，不依赖校园网
 
 ## 快速开始
 
@@ -61,7 +61,7 @@ nbw-digest/
 │   └─ web/             前端：原生 JS + CSS，无构建步骤
 ├─ tests/
 │   ├─ fixtures/        真实页面样本（离线测试用）
-│   └─ test_core.py     25 个 unittest 用例
+│   └─ test_core.py     26 个 unittest 用例
 ├─ scripts/
 │   └─ install_cron.sh  Linux/macOS 定时任务
 ├─ config.example.json  配置样例
@@ -205,7 +205,7 @@ WantedBy=multi-user.target
 ## 开发与测试
 
 ```bash
-python -m unittest discover -s tests -v      # 25 个用例，全部离线
+python -m unittest discover -s tests -v      # 26 个用例，全部离线
 ```
 
 测试用 `tests/fixtures/` 里的真实页面（已脱敏，无 cookie），所以**不需要校园网**也能跑，

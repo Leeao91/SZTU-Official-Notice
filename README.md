@@ -1,6 +1,6 @@
 # 公文通 · 每日汇总（nbwdigest）
 
-[![CI](https://github.com/your-name/nbw-digest/actions/workflows/ci.yml/badge.svg)](https://github.com/your-name/nbw-digest/actions/workflows/ci.yml)
+[![CI](https://github.com/Leeao91/nbw-digest/actions/workflows/ci.yml/badge.svg)](https://github.com/Leeao91/nbw-digest/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Zero deps](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
@@ -38,7 +38,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/your-name/nbw-digest.git
+git clone https://github.com/Leeao91/nbw-digest.git
 cd nbw-digest
 
 python -m nbwdigest          # 抓取一次（首次会建立基线，只取首页 20 条）

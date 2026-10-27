@@ -37,3 +37,17 @@ jobs:
 
       - name: 服务端冒烟（仅检查启动参数）
         run: python -m nbwdigest serve --help
+
+      - name: 确认前端资源随包分发
+        run: |
+          python -c "from nbwdigest import webapp; p = webapp.WEB_DIR / 'index.html'; assert p.is_file(), p; print('web assets ok:', p)"
+
+      # 中文帮助在 GBK/cp1252 控制台下曾经会 UnicodeEncodeError，这里守住
+      - name: 非 UTF-8 控制台兼容性
+        if: runner.os == 'Windows'
+        env:
+          PYTHONIOENCODING: cp936
+        run: |
+          python -m nbwdigest --help
+          python -m nbwdigest serve --help
+          python nbw_digest.py --help

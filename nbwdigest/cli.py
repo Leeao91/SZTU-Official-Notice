@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import io
 import json
 import sys
 import time
@@ -17,6 +16,7 @@ from .core import (
     DATA_DIR,
     append_archive,
     build_page_url,
+    ensure_stdio,
     fetch,
     guesses_tags,
     load_config,
@@ -241,19 +241,6 @@ def summary_stats(items: list[dict]) -> dict:
         cats[it["category"] or "其他"] = cats.get(it["category"] or "其他", 0) + 1
     order = [c for c in CAT_ORDER if c in cats] + [c for c in cats if c not in CAT_ORDER]
     return {"cats": cats, "by_cat": [f"{c} {cats[c]}" for c in order]}
-
-
-def ensure_stdio() -> None:
-    """pythonw / 计划任务里没有控制台，给一个哑 stdout，否则任何 print 都会抛异常。"""
-    if sys.stdout is None:
-        sys.stdout = io.StringIO()
-    if sys.stderr is None:
-        sys.stderr = io.StringIO()
-    try:  # Windows 控制台默认 GBK，改成 UTF-8 避免中文乱码
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
-    except Exception:
-        pass
 
 
 def main() -> int:

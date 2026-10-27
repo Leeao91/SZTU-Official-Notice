@@ -26,7 +26,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 
-from .core import DATA_DIR, ROOT
+from .core import DATA_DIR, ROOT, ensure_stdio
 
 WEB_DIR = Path(__file__).resolve().parent / "web"
 REPORTS_DIR = DATA_DIR / "reports"
@@ -195,6 +195,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> int:
+    ensure_stdio()
     ap = argparse.ArgumentParser(description="公文通手机版服务")
     ap.add_argument("--port", type=int, default=int(os.environ.get("NBW_PORT", "8080")))
     ap.add_argument("--open", action="store_true", help="启动后自动打开本机浏览器")

@@ -69,6 +69,26 @@ SSL_CTX.verify_mode = ssl.CERT_NONE
 
 
 # --------------------------------------------------------------------------- #
+# 标准输入输出兜底
+# --------------------------------------------------------------------------- #
+def ensure_stdio() -> None:
+    """让 print 在两种环境下都不会崩：
+
+    1. pythonw / 计划任务：没有控制台，sys.stdout 是 None；
+    2. Windows 控制台默认 GBK / cp1252：打印中文会 UnicodeEncodeError。
+    """
+    if sys.stdout is None:
+        sys.stdout = io.StringIO()
+    if sys.stderr is None:
+        sys.stderr = io.StringIO()
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+
+# --------------------------------------------------------------------------- #
 # 配置 / 日志
 # --------------------------------------------------------------------------- #
 def load_config() -> dict:
@@ -634,6 +654,7 @@ def render_report(run_dt: datetime, items: list[dict], stats: dict,
 # --------------------------------------------------------------------------- #
 
 __all__ = [
+    "ensure_stdio",
     "load_config",
     "log",
     "fetch",

@@ -173,7 +173,7 @@ class TestStdioGuard(unittest.TestCase):
         old_out, old_err = sys.stdout, sys.stderr
         sys.stdout = sys.stderr = None
         try:
-            cli.ensure_stdio()
+            core.ensure_stdio()
             self.assertIsNotNone(sys.stdout)
             self.assertIsNotNone(sys.stderr)
             print("这行不能崩")            # 关键：print 必须可用
